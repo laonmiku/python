@@ -1,0 +1,48 @@
+<div class="my-5">
+    <h1 class="its_title">  {{bbs.bid}}번 {{title}}</h1>
+    <div class="text-end mb-2" id="buttons">
+        <button id="delete" class="btn btn-outline-danger px-3 me-3">삭제</button>
+        <button id="update" class="btn btn-outline-primary px-3">수정</button>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5>{{bbs.title}}</h5>
+            <hr/>
+            <div style="white-space: pre-wrap; " class="text-start ">
+                {% if bbs.contents %}
+                    {{ bbs.contents }}
+                {% else %}
+                    <span style="color: rgb(187, 187, 187); font-size: 1rem;text-align: left;">
+                        내용이 없습니다.
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card-footer text-end text-muted">
+            Posted by [{{bbs.writer}}] on [{{bbs.fmtDate}}]
+        </div>
+    </div>
+</div>
+<script>
+    const writer = "{{bbs.writer}}";
+    if(writer == uid){
+        $("#buttons").show();
+    }else{
+        $("#buttons").hide();
+    }
+
+    $("#delete").on("click",function(e){
+        const bid="{{bbs.bid}}";
+        if(!confirm(`${bid}번 글을 삭제하실래요?`)) return;
+        //삭제하기
+        $.ajax({
+            type:"delete",
+            url:`/bbs/delete/${bid}`,
+            success:function(data){
+                if(data == 'success'){
+                    location.href="/bbs";
+                }
+            }
+        })
+    })
+</script>

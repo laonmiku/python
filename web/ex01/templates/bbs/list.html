@@ -1,0 +1,49 @@
+<div class="my-5">
+    <h1 class="its_title">{{title}}</h1>
+    <div id="insert" class="text-end">
+        <a href="/bbs/insert">글쓰기</a>
+    </div>
+    <div id="div_list"></div> 
+    {%raw%}
+    <script id="temp_list" type="x-handlebars-template">
+       <table class="table table-striped ">
+        <tr class="table-dark">
+            <td>번호</td>
+            <td>제목</td>
+            <td>글쓴이</td>
+            <td>날짜</td>
+        </tr>
+        {{#each .}}
+            <tr>
+                <td>{{bid}}</td>
+                <td><a href="/bbs/{{bid}}">{{title}}</a></td>
+                <td>{{writer}}</td>
+                <td>{{fmtDate}}</td>
+            </tr>
+        {{/each}}
+       </table>
+    </script>
+    {%endraw%}
+    </div>
+</div>
+<script>
+    getList();
+    function getList(){
+        $.ajax({
+            type:"get",
+            url:"/bbs/list.json",
+            success:function(data){
+                console.log("데이터 : ",data);
+                const temp=Handlebars.compile($("#temp_list").html());
+                $("#div_list").html(temp(data));
+            }
+        }); 
+    }
+
+    if(uid){
+        $("#insert").show();
+    }else{
+        $("#insert").hide();
+    }
+   
+</script>
