@@ -89,6 +89,8 @@
         url:`/reply/${rid}`,
         success:function(data){
           if(data=='success'){
+            const last = Math.ceil((total-1)/size)
+            if(totalPages > last && last > 0) page--;
             getList();
           }
         }
@@ -118,10 +120,6 @@
           }
   
           if(curPages != totalPages){
-            if(page>curPages){
-              page--;
-              getList();
-            }
             totalPages = curPages;
             $("#pagination").twbsPagination("changeTotalPages", totalPages, page);
           }
