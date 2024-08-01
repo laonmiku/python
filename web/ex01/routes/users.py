@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template,request
+from flask import Blueprint, render_template,request,redirect
 from dao import users
 import json
 
@@ -23,3 +23,15 @@ def loginPost():
         else :
             result=2
     return str(result)
+
+@bp.route('/insert', methods=['POST'])
+def insertPost():
+  files=request.files.getlist('file')
+  for file in files:
+    file.save('static/images/' + file.filename)
+  return redirect('/')
+  
+
+@bp.route('/insert')
+def insert():
+  return render_template('index.html', title='사용자등록', pageName='users/insert.html')
