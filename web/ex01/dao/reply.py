@@ -50,7 +50,7 @@ def delete(rid):
     try:
       with db.connection.cursor() as cursor:
         sql="delete from reply where rid=%s"
-        cursor.execute(sql,rid)
+        cursor.execute(sql, rid)
         db.connection.commit()
         return 'success'
     except Exception as err:
@@ -60,14 +60,14 @@ def delete(rid):
       cursor.close()
 
 def update(reply):
-    try:
-      with db.connection.cursor() as cursor:
-        sql="update reply set contents=%s, regDate=now() where rid=%s"
-        cursor.execute(sql,(reply.get("contents"), reply.get("rid")))
-        db.connection.commit()
-        return 'success'
-    except Exception as err:
-      print('수정오류', err)
-      return 'fail'
-    finally:
-      cursor.close()
+  try:
+    with db.connection.cursor() as cursor:
+      sql="update reply set contents=%s, regDate=now() where rid=%s"
+      cursor.execute(sql, (reply.get('contents'), reply.get('rid')))
+      db.connection.commit()
+      return 'success'
+  except Exception as err:
+    print('수정오류', err)
+    return 'fail'
+  finally:
+    cursor.close()

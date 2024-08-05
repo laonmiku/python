@@ -18,13 +18,13 @@ def insert():
   result = DAO.insert(req)
   return result
 
-@bp.route("/<int:rid>",methods=["DELETE"])
+@bp.route('/<int:rid>', methods=['DELETE'])
 def delete(rid):
   result = DAO.delete(rid)
   return result
 
-@bp.route("/update", methods=['POST'])
+@bp.route('/update', methods=['POST'])
 def update():
-  req=json.loads(request.get_data())
+  req = json.loads(request.get_data())
   result = DAO.update(req)
   return result

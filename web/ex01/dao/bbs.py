@@ -82,3 +82,4 @@ def total():
     print('게시글수오류:', err)
   finally:
     cursor.close()   
+

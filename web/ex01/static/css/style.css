@@ -1,16 +1,10 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Dongle&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
 
 * {
-    font-family: "Dongle", sans-serif;
-  }
-.its_title{
-  text-align: center;
-  color : skyblue;
-  margin-top:1.5rem ;
-  margin-bottom:1.5rem ;
-}  
-
+ font-family: "Sunflower", sans-serif;
+ font-weight: 300;
+ font-style: normal;
+}
 
 .ellipsis {
   overflow: hidden;
