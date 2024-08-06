@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 
 index = 0
-#쿠팡에서 노트북 검색>1페이지데이터
+#쿠팡에서 노트북 검색>1페이지데이터>맨처음엔 디폴트값이라 2페이지 갓다가 다시 1페이지와야 찍힘
 #이 모든작업을 6번 반복하게만들어줌!for i in range(1,6):
 #페이지가 변수니까 page={} 이렇게 해주고 맨뒤에 .format(i)를 해주면 {}여기에 i가 들어감
 for i in range(1,6):
