@@ -58,12 +58,12 @@ wait_until(first)
 e = browser.find_element(By.XPATH, first)
 print(e.text)
 
-#------------------------항공권선택 전부출력 왜안나와 
-# xpath = '//*[contains(@class, "concurrent_ConcurrentItemContainer__NDJda")]'
-# es = browser.find_elements(By.XPATH, xpath)[:10]
-# for e in es:
-#     print(e.text)
-#     print('-'*50)
-# print("전체검색수 : ",len(es))
+#------------------------항공권선택 전부출력  
+es = browser.find_elements(By.XPATH, '//*[contains(@class,"concurrent_ConcurrentItemContainer__NDJda")]')
+es = es[:10]
+for e in es:
+  print(e.text)
+  print('-' * 50)
+print("전체검색수:", len(es))
 
 browser.close
